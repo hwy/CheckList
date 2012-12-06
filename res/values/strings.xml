@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, CheckListActivity!</string>
+    <string name="app_name">CheckList</string>
+    <string name="spinnername">請選擇種類</string>
+  <string name="pull_to_refresh_pull_label">下拉更新&#8230;</string>
+  <string name="pull_to_refresh_release_label">鬆開更新&#8230;</string>
+  <string name="pull_to_refresh_tap_label">點擊更新&#8230;</string>
+  <string name="pull_to_refresh_refreshing_label">載入中&#8230;</string>
+  
+  <style name="ButtonText">
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">fill_parent</item>
+    <item name="android:textColor">#ffffff</item>
+    <item name="android:gravity">center</item>
+    <item name="android:layout_margin">1dp</item>
+    <item name="android:textSize">20dp</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:shadowColor">#000000</item>
+    <item name="android:shadowDx">1</item>
+    <item name="android:shadowDy">1</item>
+    <item name="android:shadowRadius">2</item>
+</style>
+</resources>

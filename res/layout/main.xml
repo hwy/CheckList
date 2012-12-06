@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+   <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+       android:id="@+id/relativeLayout1"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:background="#ffffff" >
+
+       
+           <TextView
+        android:id="@+id/textViewidpw"
+        android:layout_width="wrap_content"
+        android:layout_height="35dip"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="#FF3232"
+        android:gravity="center_vertical"
+        android:text="請選擇 "
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#FFFFFF" />
+           
+       <Button
+           android:id="@+id/buttoneditlist"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignBottom="@+id/textViewidpw"
+           android:layout_alignParentRight="true"
+           android:layout_alignParentTop="true"
+           android:text="刪除" android:textAppearance="?android:attr/textAppearanceSmall"
+           android:background="@drawable/yellowbtn" style="@style/ButtonText"/>
+
+       <Button
+           android:id="@+id/buttonnewlist"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignBottom="@+id/textViewidpw"
+           android:layout_alignParentTop="true"
+           android:layout_toLeftOf="@+id/buttoneditlist"
+           android:text="新增" android:textAppearance="?android:attr/textAppearanceSmall"
+           android:background="@drawable/bluebtn" style="@style/ButtonText"/>
+
+       <Button
+           android:id="@+id/buttonloadlist"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignBottom="@+id/textViewidpw"
+           android:layout_alignParentTop="true"
+           android:layout_toLeftOf="@+id/buttonnewlist"
+           android:text="讀取" android:textAppearance="?android:attr/textAppearanceSmall"
+           android:background="@drawable/greenbtn" style="@style/ButtonText"
+           />
+       
+       <GridView
+           android:id="@+id/gridview"
+           android:layout_width="fill_parent"
+           android:layout_height="fill_parent"
+           android:layout_below="@+id/buttoneditlist"
+           android:layout_marginBottom="50dip"
+           android:columnWidth="90dp"
+           android:gravity="center"
+           android:horizontalSpacing="10dp"
+           android:numColumns="auto_fit"
+           android:stretchMode="columnWidth"
+           android:verticalSpacing="10dp" />
+       
+   </RelativeLayout>

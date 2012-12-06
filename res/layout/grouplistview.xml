@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+android:background="#FFFFFF">
+ 
+	<TextView
+	android:id="@+id/TextViewGroup" 
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:gravity="center_vertical"
+	android:layout_marginLeft="50px"
+	android:text="group" android:textColor="#000000"
+	android:textAppearance="?android:attr/textAppearanceLarge">
+	</TextView>
+
+	<TextView
+	    android:id="@+id/TextViewqty"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_marginRight="10px"
+	    android:layout_alignParentRight="true"
+	    android:layout_alignParentTop="true"
+	    android:gravity="center_vertical"
+	    android:text="數量"
+	    android:textAppearance="?android:attr/textAppearanceLarge"
+	    android:textColor="#000000" />
+
+	<TextView
+	    android:id="@+id/TextViewprice"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentTop="true"
+	    android:layout_marginRight="16dp"
+	    android:layout_toLeftOf="@+id/TextViewqty"
+	    android:gravity="center_vertical"
+	    android:text="價錢"
+	    android:textAppearance="?android:attr/textAppearanceLarge"
+	    android:textColor="#000000" />
+	
+</RelativeLayout>
+

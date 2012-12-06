@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativebbq"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff" >
+
+    <TextView
+        android:id="@+id/textViewidpw"
+        android:layout_width="wrap_content"
+        android:layout_height="35dip"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="#FF3232"
+        android:gravity="center_vertical"
+        android:text="名 : 尚未命名 ID: 尚未有  PW: 尚未有 "
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#FFFFFF" />
+
+    <com.hwy.checklist.library.PullToRefreshExpandableListView
+        android:id="@+id/ExpandableListViewall"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewidpw"
+        android:layout_marginBottom="50dip" />
+
+    <Button
+        android:id="@+id/Buttonedit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ExpandableListViewall"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="編輯"
+        android:background="@drawable/yellowbtn" style="@style/ButtonText" />
+
+    <Button
+        android:id="@+id/Buttonupdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ExpandableListViewall"
+        android:layout_toLeftOf="@+id/Buttonedit"
+        android:layout_alignParentTop="true"
+        android:text="更新"
+        android:background="@drawable/greenbtn" style="@style/ButtonText" />
+
+    <TextView
+        android:id="@+id/textViewcttl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:text="總數 : $"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/textViewttl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewcttl"
+        android:layout_alignBottom="@+id/textViewcttl"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/textViewcttl"
+        android:text="00000"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#000000"
+        android:width="70dip" />
+
+</RelativeLayout>

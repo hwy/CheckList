@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativebbq"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+     >
+
+    <TextView
+        android:id="@+id/textViewnameid"
+        android:layout_width="wrap_content"
+        android:layout_height="35dip"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center_vertical"
+        android:text="名 : 尚未命名  "
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#FFFFFF" android:background='#FF3232'/>
+
+        <com.hwy.checklist.library.PullToRefreshExpandableListView
+        android:id="@+id/ExpandableListViewall"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewnameid"
+        android:layout_marginBottom="50dip" />
+
+       <Button
+           android:id="@+id/Buttonsave"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_above="@+id/ExpandableListViewall"
+           android:layout_alignParentRight="true"
+           android:layout_alignParentTop="true"
+           android:text="完成" 
+           android:background="@drawable/bluebtn" style="@style/ButtonText"/>
+
+       <Button
+           android:id="@+id/Buttonadd"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_above="@+id/ExpandableListViewall"
+           android:layout_toLeftOf="@+id/Buttonrename"
+		   android:layout_alignParentTop="true"
+           android:text="新增"
+           android:background="@drawable/yellowbtn" style="@style/ButtonText" />
+
+       <Button
+           android:id="@+id/Buttonrename"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_above="@+id/ExpandableListViewall"
+           android:layout_toLeftOf="@+id/Buttonsave"
+           android:layout_alignParentTop="true"
+           android:text="改名"
+           android:background="@drawable/purplebtn" style="@style/ButtonText" />
+
+</RelativeLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:id="@+id/childlayout"
+	android:orientation="horizontal"
+	android:background="#ffffff" >
+	
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff" 
+        >
+
+        <CheckBox
+            android:id="@+id/checkBox1"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="15dip"
+		  android:focusable="false"
+		  android:clickable="false"
+            android:text="CheckBox" />
+
+        <TextView
+            android:id="@+id/textViewchild"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/checkBox1"
+            android:layout_toRightOf="@+id/checkBox1"
+            android:text="Large Text"
+	    	  android:focusable="false"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000000" />
+
+          <TextView
+            android:id="@+id/Textqty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+			android:layout_alignBottom="@+id/checkBox1"
+            android:text="0000"
+            android:focusable="false"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000000" android:width="50dip"/>
+
+         <TextView
+            android:id="@+id/Textprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/Textqty"
+            android:layout_alignBottom="@+id/checkBox1"
+ 			android:text="0000"
+ 			android:focusable="false"
+ 			android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000000" android:width="50dip">
+
+        </TextView>
+
+    </RelativeLayout>
+
+</LinearLayout>
+    
