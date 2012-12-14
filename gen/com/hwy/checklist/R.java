@@ -55,7 +55,8 @@ containing a value of this type.
         public static final int pulltorefresh_up_arrow=0x7f020008;
         public static final int purplebtn=0x7f020009;
         public static final int red_x=0x7f02000a;
-        public static final int yellowbtn=0x7f02000b;
+        public static final int travelicon=0x7f02000b;
+        public static final int yellowbtn=0x7f02000c;
     }
     public static final class id {
         public static final int Buttonadd=0x7f040009;

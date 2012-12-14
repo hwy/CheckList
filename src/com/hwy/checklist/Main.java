@@ -61,7 +61,7 @@ public class Main extends Activity {
 	//表名
 
 	//辅助类名
-	final DbHelper helper = new DbHelper(this, db_name, null, 1);
+	final DbHelper helper = new DbHelper(this, db_name, null, 2);
 	
 	String gettypeno;
 		
@@ -83,7 +83,7 @@ public class Main extends Activity {
          Button buttonLoadlist = (Button) findViewById(R.id.buttonloadlist);
          buttonLoadlist.setOnClickListener(new View.OnClickListener() {
                public void onClick(View v) {
-            	   showDialog(0);
+            	   
             	   loadlistbox();
                }
            });
@@ -136,10 +136,15 @@ public class Main extends Activity {
         	map.put("List_Img", R.drawable.bbqicon );//添加图像资源的ID
         	map.put("List_type", "CheckList_BbqListitems");
         	
-        	}else {
+        	}else if(c.getInt(3)==2){
+            	map.put("List_Img", R.drawable.hotpoticon );//添加图像资源的ID
+            	map.put("List_type", "CheckList_HotListitems");
+            	
+            	}else
+            	{
         		System.out.println(c.getInt(3));
-             	map.put("List_Img", R.drawable.hotpoticon);//添加图像资源的ID
-        		map.put("List_type", "CheckList_HotListitems");
+             	map.put("List_Img", R.drawable.travelicon);//添加图像资源的ID
+        		map.put("List_type", "CheckList_TravelListitems");
         	}
         	
 			map.put("List_Name", c.getString(2));//TABLE名
@@ -237,11 +242,16 @@ public class Main extends Activity {
 	    i.putExtra("Bbq_id", Table_id); 	
 	    i.putExtra("gettypeno", "1");
 	    ta.getTabHost().setCurrentTab(1);
-	    }else{
-	    	
+	    }else if(List_type.equals("CheckList_HotListitems")){
 	    	i.putExtra("Hotpot_id", Table_id);
 	    	i.putExtra("gettypeno", "2");
 	    	ta.getTabHost().setCurrentTab(2);
+		    }else
+		    {
+	    	
+	    	i.putExtra("Travel_id", Table_id);
+	    	i.putExtra("gettypeno", "3");
+	    	ta.getTabHost().setCurrentTab(3);
 	    }
     	
     } //end load list
@@ -269,7 +279,7 @@ public class Main extends Activity {
          //spinner stype
          Spinner spinnerlisttype = (Spinner) alertDialogView.findViewById(R.id.spinnerlisttypes);
          //建立一個ArrayAdapter物件，並放置下拉選單的內容
-         ArrayAdapter<String> adapterlisttype = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, new String[]{"請選擇種類","BBQ","打邊爐"});
+         ArrayAdapter<String> adapterlisttype = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, new String[]{"請選擇種類","BBQ","打邊爐","旅行"});
          
 
          //設定下拉選單的樣式
@@ -316,7 +326,7 @@ public class Main extends Activity {
     			    i.putExtra("gettypeno", gettypeno);
     			    i.removeExtra("tableid");
     			    TabActivity ta = (TabActivity) Main.this.getParent();
-    			    ta.getTabHost().setCurrentTab(3);
+    			    ta.getTabHost().setCurrentTab(4);
     			    
     			    
     	    }else{
@@ -536,9 +546,12 @@ public class Main extends Activity {
 		        	map.put("List_Img", R.drawable.bbqicon );//添加图像资源的ID
 		        	map.put("List_type", "CheckList_BbqListitems");
 		        	
-		        	}else {
+		        	}else if(msgreturn[3].equals("2")) {
 		             	map.put("List_Img", R.drawable.hotpoticon);//添加图像资源的ID
 		        		map.put("List_type", "CheckList_HotListitems");
+		        	} else {
+		             	map.put("List_Img", R.drawable.travelicon);//添加图像资源的ID
+		        		map.put("List_type", "CheckList_TravelListitems");
 		        	}
 		        	
 					map.put("List_Name", msgreturn[2]);//TABLE名

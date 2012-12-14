@@ -71,7 +71,7 @@ public class Createnewlist extends ExpandableListActivity  {
 		public String tableid;
 		
 		//辅助类名
-		final DbHelper helper = new DbHelper(this, db_name, null, 1);
+		final DbHelper helper = new DbHelper(this, db_name, null, 2);
 	 //end sql
 	 
 	//loading hp	
@@ -130,8 +130,16 @@ public class Createnewlist extends ExpandableListActivity  {
 					table_listname = "CheckList_HotListitems";
 					Loadfood = "http://www.rapidtao.com/t/hwy/checklistphp/loadfoodhotpot.php";
 					typeoffood =new String[]{"請選擇種類","湯底", "肉類", "海鮮類", "丸類", "其他", "鮮菌類", "時蔬類", "粉麵類","醬料","飲品"};
+				}else if(gettypeno.equals("3")){
+					table_foodtypename = "CheckList_Travel";
+					table_listname = "CheckList_TravelListitems";
+					Loadfood = "http://www.rapidtao.com/t/hwy/checklistphp/loadtravel.php";
+					typeoffood =new String[]{"請選擇種類","證明文件", "金錢", "衣物", "個人護理", "小型電器", "個人護理–女性", "其他", "藥品"};
 				}//end check
 		  
+		 
+		  
+
 		  
 		  System.out.println(table_foodtypename+table_listname);
 		  
@@ -286,7 +294,36 @@ public class Createnewlist extends ExpandableListActivity  {
 				groups.add(group10);
 				
 				
-				  }
+				  }else if(gettypeno.equals("3")){
+						
+						//准备一级列表中显示的数据:2个一级列表,分别显示"group1"和"group2"
+						Map<String, String> group1 = new HashMap<String, String>();
+						group1.put("group", "證明文件");
+						Map<String, String> group2 = new HashMap<String, String>();
+						group2.put("group", "金錢");
+						Map<String, String> group3 = new HashMap<String, String>();
+						group3.put("group", "衣物");
+						Map<String, String> group4 = new HashMap<String, String>();
+						group4.put("group", "個人護理");
+						Map<String, String> group5 = new HashMap<String, String>();
+						group5.put("group", "小型電器");
+						Map<String, String> group6 = new HashMap<String, String>();
+						group6.put("group", "個人護理–女性");
+						Map<String, String> group7 = new HashMap<String, String>();
+						group7.put("group", "其他");
+						Map<String, String> group8 = new HashMap<String, String>();
+						group8.put("group", "藥品");
+											
+						groups.add(group1);
+						groups.add(group2);
+						groups.add(group3);
+						groups.add(group4);
+						groups.add(group5);
+						groups.add(group6);
+						groups.add(group7);
+						groups.add(group8);						
+						
+						  }
 				 
 		
 	        mPullRefreshListView = (PullToRefreshExpandableListView) findViewById(R.id.ExpandableListViewall);
@@ -448,7 +485,7 @@ public class Createnewlist extends ExpandableListActivity  {
 	childs.add(child4);
 	childs.add(child5);
 	childs.add(child6);
-		} else {
+		} else if (gettypeno.equals("2")){
 			
 			child1.clear();
 		   	child2.clear();
@@ -582,6 +619,120 @@ public class Createnewlist extends ExpandableListActivity  {
 			childs.add(child9);
 			childs.add(child10);
 		
+		}else{
+			
+			child1.clear();
+		   	child2.clear();
+		   	child3.clear();
+		   	child4.clear();
+		   	child5.clear();
+		   	child6.clear();
+		   	child7.clear();
+		   	child8.clear();
+		   	
+			  for(cfood.moveToFirst();!cfood.isAfterLast();cfood.moveToNext()){
+		        	//System.out.println(cfood.getString(2));
+				String checkboxstate ="false";
+		    	String Price ="0";
+		    	String Qty ="1";
+				for(clist.moveToFirst();!clist.isAfterLast();clist.moveToNext()){
+
+				 	if(cfood.getInt(0)==clist.getInt(1)){
+		    	 		checkboxstate="true";
+			        	Price =clist.getString(3);
+			        	Qty =clist.getString(4);
+		    	 	}	
+				};
+		    	switch (cfood.getInt(1)) {
+		        case 1:       	            	
+		        	  Map<String, String> child1Data1 = new HashMap<String, String>();
+		        	  child1Data1.put("foodname", cfood.getString(2));
+		        	  child1Data1.put("checkboxstate", checkboxstate);
+		        	  child1Data1.put("Food_id", cfood.getString(0));
+		        	  child1Data1.put("Price", Price);
+		        	  child1Data1.put("Qty", Qty);
+		        	  child1.add(child1Data1);
+		              break;
+		        case 2: 
+		        	  Map<String, String> child2Data1 = new HashMap<String, String>();
+		        	  child2Data1.put("foodname", cfood.getString(2));
+		        	  child2Data1.put("checkboxstate", checkboxstate);
+		        	  child2Data1.put("Food_id", cfood.getString(0));
+		        	  child2Data1.put("Price", Price);
+		        	  child2Data1.put("Qty", Qty);
+		        	  child2.add(child2Data1);
+		              break;
+		        case 3: 
+		        	  Map<String, String> child3Data1 = new HashMap<String, String>();
+		        	  child3Data1.put("foodname", cfood.getString(2));
+		        	  child3Data1.put("checkboxstate", checkboxstate);
+		        	  child3Data1.put("Food_id", cfood.getString(0));
+		        	  child3Data1.put("Price", Price);
+		        	  child3Data1.put("Qty", Qty);
+		        	  child3.add(child3Data1);
+		              break;
+		        case 4:  
+		        	  Map<String, String> child4Data1 = new HashMap<String, String>();
+		        	  child4Data1.put("foodname", cfood.getString(2));
+		        	  child4Data1.put("checkboxstate", checkboxstate);
+		        	  child4Data1.put("Food_id", cfood.getString(0));
+		        	  child4Data1.put("Price", Price);
+		        	  child4Data1.put("Qty", Qty);
+		        	  child4.add(child4Data1);
+		              break;
+		        case 5:  
+		        	  Map<String, String> child5Data1 = new HashMap<String, String>();
+		        	  child5Data1.put("foodname", cfood.getString(2));
+		        	  child5Data1.put("checkboxstate", checkboxstate);
+		        	  child5Data1.put("Food_id", cfood.getString(0));
+		        	  child5Data1.put("Price", Price);
+		        	  child5Data1.put("Qty", Qty);
+		        	  child5.add(child5Data1);
+		              break;
+		        case 6: 
+		        	  Map<String, String> child6Data1 = new HashMap<String, String>();
+		        	  child6Data1.put("foodname", cfood.getString(2));
+		        	  child6Data1.put("checkboxstate", checkboxstate);
+		        	  child6Data1.put("Food_id", cfood.getString(0));
+		        	  child6Data1.put("Price", Price);
+		        	  child6Data1.put("Qty", Qty);
+		        	  child6.add(child6Data1);
+		              break;
+		        case 7: 
+		        	  Map<String, String> child7Data1 = new HashMap<String, String>();
+		        	  child7Data1.put("foodname", cfood.getString(2));
+		        	  child7Data1.put("checkboxstate", checkboxstate);
+		        	  child7Data1.put("Food_id", cfood.getString(0));
+		        	  child7Data1.put("Price", Price);
+		        	  child7Data1.put("Qty", Qty);
+		        	  child7.add(child7Data1);
+		              break;
+		        case 8: 
+		        	  Map<String, String> child8Data1 = new HashMap<String, String>();
+		        	  child8Data1.put("foodname", cfood.getString(2));
+		        	  child8Data1.put("checkboxstate", checkboxstate);
+		        	  child8Data1.put("Food_id", cfood.getString(0));
+		        	  child8Data1.put("Price", Price);
+		        	  child8Data1.put("Qty", Qty);
+		        	  child8.add(child8Data1);
+		              break;
+
+		    	}
+		    	
+
+		    };
+
+
+			childs.add(child1);
+			childs.add(child2);
+			childs.add(child3);
+			childs.add(child4);
+			childs.add(child5);
+			childs.add(child6);
+			childs.add(child7);
+			childs.add(child8);
+
+		
 		}
 		
 		
@@ -699,8 +850,8 @@ public class Createnewlist extends ExpandableListActivity  {
 	    	  
 	      	AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-	      	builder.setTitle("新增食物");
-	      	builder.setMessage("請選擇種類及輸入食物名稱");
+	      	builder.setTitle("新增物件");
+	      	builder.setMessage("請選擇種類及輸入物件名稱");
 
 	      	 LayoutInflater inflater = LayoutInflater.from(this);
 
@@ -876,7 +1027,7 @@ public class Createnewlist extends ExpandableListActivity  {
 		 		   
 		 //		   System.out.println(result); 
 		 	  laodtosql(msgreturn[1]);		 		   
-		 	  Errorbox("你所加的食物已經加了在"+msgreturn[0]);
+		 	  Errorbox("你所加的物件已經加了在"+msgreturn[0]);
 		 	   }
 		 	   
 

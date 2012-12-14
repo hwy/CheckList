@@ -39,7 +39,7 @@ List<List<Map<String, String>>> childs;
 	public String table_name;
 	public String tableid;
 	//辅助类名
-	final DbHelper helper = new DbHelper(context, db_name, null, 1);
+	final DbHelper helper = new DbHelper(context, db_name, null, 2);
 //end sql
 /*
 * 构造函数:

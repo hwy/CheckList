@@ -73,7 +73,7 @@ public class Checkliststate extends ExpandableListActivity  {
 		//Table id
 		String Table_id; 
 		//辅助类名
-		final DbHelper helper = new DbHelper(this, db_name, null, 1);
+		final DbHelper helper = new DbHelper(this, db_name, null, 2);
 	 //end sql
 	 
 		ExpandableChecklist viewAdapter;
@@ -141,9 +141,11 @@ public class Checkliststate extends ExpandableListActivity  {
 		 table_name="CheckList_HotListitems";
 		 CheckList_Food="CheckList_Hot_Food";
 		 System.out.println("CheckList_Hot_Food");
-	 }else{
-		 System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOO");
-	 };
+	 }else  if (gettypeno==3){
+		 Table_id = i.getStringExtra("Travel_id");
+		 table_name="CheckList_TravelListitems";
+		 CheckList_Food="CheckList_Travel";
+		 System.out.println("CheckList_Travel");	 };
 	 
 	 System.out.println("第一次"+Table_id);
 	
@@ -230,7 +232,7 @@ public class Checkliststate extends ExpandableListActivity  {
 			    i.putExtra("tableid", Table_id);
 			    System.out.println(gettypeno+newListname+Table_id);
 			    TabActivity ta = (TabActivity) Checkliststate.this.getParent();
-			    ta.getTabHost().setCurrentTab(3);
+			    ta.getTabHost().setCurrentTab(4);
 		
            }
        });
@@ -592,8 +594,164 @@ public class Checkliststate extends ExpandableListActivity  {
 			childs.add(child8);
 			childs.add(child9);
 			childs.add(child10);
-   	}   
+   	}   else if (gettypeno==3){
+   		
+		Cursor c = db.rawQuery("SELECT COUNT("+CheckList_Food+".Types_id) FROM "+table_name+", "+CheckList_Food+" WHERE  "+table_name+".List_id2="+Table_id+" and "+CheckList_Food+".Types_id='1' and "+table_name+".Food_id="+CheckList_Food+".Food_id", null);
+		c.moveToFirst();	
+		group1.put("group", "證明文件  "+c.getInt(0)+"個");
 
+		c = db.rawQuery("SELECT COUNT("+CheckList_Food+".Types_id) FROM "+table_name+", "+CheckList_Food+" WHERE  "+table_name+".List_id2="+Table_id+" and "+CheckList_Food+".Types_id='2' and "+table_name+".Food_id="+CheckList_Food+".Food_id", null);
+		c.moveToFirst();
+		group2.put("group", "金錢   "+c.getInt(0)+"個");
+
+		c = db.rawQuery("SELECT COUNT("+CheckList_Food+".Types_id) FROM "+table_name+", "+CheckList_Food+" WHERE  "+table_name+".List_id2="+Table_id+" and "+CheckList_Food+".Types_id='3' and "+table_name+".Food_id="+CheckList_Food+".Food_id", null);
+		c.moveToFirst();
+		group3.put("group", "衣物   "+c.getInt(0)+"個");
+
+		c = db.rawQuery("SELECT COUNT("+CheckList_Food+".Types_id) FROM "+table_name+", "+CheckList_Food+" WHERE  "+table_name+".List_id2="+Table_id+" and "+CheckList_Food+".Types_id='4' and "+table_name+".Food_id="+CheckList_Food+".Food_id", null);
+		c.moveToFirst();
+		group4.put("group", "個人護理   "+c.getInt(0)+"個");
+
+		c = db.rawQuery("SELECT COUNT("+CheckList_Food+".Types_id) FROM "+table_name+", "+CheckList_Food+" WHERE  "+table_name+".List_id2="+Table_id+" and "+CheckList_Food+".Types_id='5' and "+table_name+".Food_id="+CheckList_Food+".Food_id", null);
+		c.moveToFirst();
+		group5.put("group", "小型電器   "+c.getInt(0)+"個");
+
+		c = db.rawQuery("SELECT COUNT("+CheckList_Food+".Types_id) FROM "+table_name+", "+CheckList_Food+" WHERE  "+table_name+".List_id2="+Table_id+" and "+CheckList_Food+".Types_id='6' and "+table_name+".Food_id="+CheckList_Food+".Food_id", null);
+		c.moveToFirst();
+		group6.put("group", "個人護理–女性   "+c.getInt(0)+"個");
+
+		c = db.rawQuery("SELECT COUNT("+CheckList_Food+".Types_id) FROM "+table_name+", "+CheckList_Food+" WHERE  "+table_name+".List_id2="+Table_id+" and "+CheckList_Food+".Types_id='7' and "+table_name+".Food_id="+CheckList_Food+".Food_id", null);
+		c.moveToFirst();
+		group7.put("group", "其他   "+c.getInt(0)+"個");
+
+		c = db.rawQuery("SELECT COUNT("+CheckList_Food+".Types_id) FROM "+table_name+", "+CheckList_Food+" WHERE  "+table_name+".List_id2="+Table_id+" and "+CheckList_Food+".Types_id='8' and "+table_name+".Food_id="+CheckList_Food+".Food_id", null);
+		c.moveToFirst();
+		group8.put("group", "藥品   "+c.getInt(0)+"個");
+
+		
+		groups.add(group1);
+		groups.add(group2);
+		groups.add(group3);
+		groups.add(group4);
+		groups.add(group5);
+		groups.add(group6);
+		groups.add(group7);
+		groups.add(group8);
+
+
+		child1.clear();
+	   	child2.clear();
+	   	child3.clear();
+	   	child4.clear();
+	   	child5.clear();
+	   	child6.clear();
+	   	child7.clear();
+	   	child8.clear();
+      	
+      	
+      	//display all data
+		//	Cursor c = db.query(table_name, null, "List_id2="+Table_id, null, null, null, null);
+      	c = db.rawQuery("SELECT "+table_name+".*, "+CheckList_Food+".Name, "+CheckList_Food+".Types_id FROM "+table_name+", "+CheckList_Food+" WHERE "+table_name+".List_id2="+Table_id+" and "+table_name+".Food_id="+CheckList_Food+".Food_id", null);	
+      	            	
+      	String bbc;
+			for(c.moveToFirst();!c.isAfterLast();c.moveToNext()){
+			
+			
+			if(c.getString(2).equals("1")){
+				bbc="true";
+			}else{
+				bbc="false";
+			}
+				
+				
+			switch (c.getInt(7)) {
+	        case 1:       	            	
+	        	  Map<String, String> child1Data1 = new HashMap<String, String>();
+	        	  child1Data1.put("foodname", c.getString(6));
+	        	  child1Data1.put("checkboxstate", bbc);
+	        	  child1Data1.put("Food_id", c.getString(1));
+	        	  child1Data1.put("Price", c.getString(3));
+	        	  child1Data1.put("Qty", c.getString(4));
+	        	  child1.add(child1Data1);
+	              break;
+	        case 2: 
+	        	  Map<String, String> child2Data1 = new HashMap<String, String>();
+	        	  child2Data1.put("foodname", c.getString(6));
+	        	  child2Data1.put("checkboxstate", bbc);
+	        	  child2Data1.put("Food_id", c.getString(1));
+	        	  child2Data1.put("Price", c.getString(3));
+	        	  child2Data1.put("Qty", c.getString(4));
+	        	  child2.add(child2Data1);
+	              break;
+	        case 3: 
+	        	  Map<String, String> child3Data1 = new HashMap<String, String>();
+	        	  child3Data1.put("foodname", c.getString(6));
+	        	  child3Data1.put("checkboxstate", bbc);
+	        	  child3Data1.put("Food_id", c.getString(1));
+	        	  child3Data1.put("Price", c.getString(3));
+	        	  child3Data1.put("Qty", c.getString(4));
+	        	  child3.add(child3Data1);
+	              break;
+	        case 4:  
+	        	  Map<String, String> child4Data1 = new HashMap<String, String>();
+	        	  child4Data1.put("foodname", c.getString(6));
+	        	  child4Data1.put("checkboxstate", bbc);
+	        	  child4Data1.put("Food_id", c.getString(1));
+	        	  child4Data1.put("Price", c.getString(3));
+	        	  child4Data1.put("Qty", c.getString(4));
+	        	  child4.add(child4Data1);
+	              break;
+	        case 5:  
+	        	  Map<String, String> child5Data1 = new HashMap<String, String>();
+	        	  child5Data1.put("foodname", c.getString(6));
+	        	  child5Data1.put("checkboxstate", bbc);
+	        	  child5Data1.put("Food_id", c.getString(1));
+	        	  child5Data1.put("Price", c.getString(3));
+	        	  child5Data1.put("Qty", c.getString(4));
+	        	  child5.add(child5Data1);
+	              break;
+	        case 6: 
+	        	  Map<String, String> child6Data1 = new HashMap<String, String>();
+	        	  child6Data1.put("foodname", c.getString(6));
+	        	  child6Data1.put("checkboxstate", bbc);
+	        	  child6Data1.put("Food_id", c.getString(1));
+	        	  child6Data1.put("Price", c.getString(3));
+	        	  child6Data1.put("Qty", c.getString(4));
+	        	  child6.add(child6Data1);
+	              break;
+	        case 7: 
+	      	  Map<String, String> child7Data1 = new HashMap<String, String>();
+	      	  child7Data1.put("foodname", c.getString(6));
+	      	child7Data1.put("checkboxstate", bbc);
+	      	child7Data1.put("Food_id", c.getString(1));
+	      	child7Data1.put("Price", c.getString(3));
+	      	child7Data1.put("Qty", c.getString(4));
+	      	  child7.add(child7Data1);
+	            break;
+	        case 8: 
+	      	  Map<String, String> child8Data1 = new HashMap<String, String>();
+	      	  child8Data1.put("foodname", c.getString(6));
+	      	child8Data1.put("checkboxstate", bbc);
+	      	child8Data1.put("Food_id", c.getString(1));
+	      	child8Data1.put("Price", c.getString(3));
+	      	child8Data1.put("Qty", c.getString(4));
+	      	  child8.add(child8Data1);
+	            break;
+	    	}
+			}
+   
+			c.close();
+			cu.close();	
+			childs.add(child1);
+			childs.add(child2);
+			childs.add(child3);
+			childs.add(child4);
+			childs.add(child5);
+			childs.add(child6);
+			childs.add(child7);
+			childs.add(child8);
+
+   	}
 
         mPullRefreshListView = (PullToRefreshExpandableListView) findViewById(R.id.ExpandableListViewall);
 
@@ -730,20 +888,22 @@ setListAdapter(viewAdapter);
         InputStream is = null;
  	   
  	   String result = "";
+        
 
  	    //http post
- 	    try{
+	        try{
  	            HttpClient httpclient = new DefaultHttpClient();
  	            HttpPost httppost = new HttpPost("http://www.rapidtao.com/t/hwy/checklistphp/checkchange.php");
- 	            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs, HTTP.UTF_8));
+	 	        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs, HTTP.UTF_8));
  	            HttpResponse response = httpclient.execute(httppost);
  	            HttpEntity entity = response.getEntity();
  	            is = entity.getContent();
    
+ 	           
  	    }catch(Exception e){
  	    	removeDialog(0);
- 	    	Toast.makeText(this, "連線出現問題,請稍後再試...", Toast.LENGTH_LONG).show(); 	
- 	            
+	    	Toast.makeText(this, "連線出現問題,請稍後再試...", Toast.LENGTH_LONG).show(); 	
+ 	         System.out.println(e);   
  	    }
 
  	    //convert response to string
@@ -757,9 +917,8 @@ setListAdapter(viewAdapter);
  	            }
  	            is.close();
  	            result=sb.toString().trim();
-
-
-			 	System.out.println(result);    
+ 	           System.out.println(result);
+ 	           
  	            
  	    }catch(Exception e){
  	    	removeDialog(0);
@@ -852,7 +1011,7 @@ setListAdapter(viewAdapter);
     		 	  
     		 	  
  	   }else{
- 		  Toast.makeText(this,"更新出現問題", Toast.LENGTH_LONG).show(); 
+ 		  Toast.makeText(this,"更新出現問題或是尚未發布上網", Toast.LENGTH_LONG).show(); 
  	   System.out.println(msgreturn);
  	   }
 
@@ -942,7 +1101,7 @@ setListAdapter(viewAdapter);
 	           //spinner stype
 	           Spinner spinnerlisttype = (Spinner) alertDialogView.findViewById(R.id.spinnerlisttypes);
 	           //建立一個ArrayAdapter物件，並放置下拉選單的內容
-	           ArrayAdapter<String> adapterlisttype = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, new String[]{"請選擇種類","BBQ","打邊爐"});
+	           ArrayAdapter<String> adapterlisttype = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, new String[]{"請選擇種類","BBQ","打邊爐","旅行"});
 	           
 
 	           //設定下拉選單的樣式
@@ -989,7 +1148,7 @@ setListAdapter(viewAdapter);
 	      			    i.putExtra("gettypeno", Integer.toString(gettypeno));
 	      			    i.removeExtra("tableid");
 	      			    TabActivity ta = (TabActivity) Checkliststate.this.getParent();
-	      			    ta.getTabHost().setCurrentTab(3);
+	      			    ta.getTabHost().setCurrentTab(4);
 	      			    
 	      			    
 	      	    }else{

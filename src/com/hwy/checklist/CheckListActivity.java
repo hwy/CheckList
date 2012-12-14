@@ -37,7 +37,8 @@ public class CheckListActivity extends TabActivity implements OnTabChangeListene
     TabSpec MainTabSpec = tabHost.newTabSpec("tad1");
     TabSpec BbqTabSpec = tabHost.newTabSpec("tad2");
     TabSpec HotpotTabSpec = tabHost.newTabSpec("tad3");
-    TabSpec CreatenewlistSpec = tabHost.newTabSpec("tad4");
+    TabSpec TravelTabSpec = tabHost.newTabSpec("tad4");
+    TabSpec CreatenewlistSpec = tabHost.newTabSpec("tad5");
 
     
     
@@ -47,6 +48,7 @@ public class CheckListActivity extends TabActivity implements OnTabChangeListene
     MainTabSpec.setIndicator("主頁").setContent(new Intent(this,Main.class ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     BbqTabSpec.setIndicator("BBQ").setContent(new Intent(this,Checkliststate.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     HotpotTabSpec.setIndicator("打邊爐").setContent(new Intent(this,Checkliststate.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+    TravelTabSpec.setIndicator("旅行").setContent(new Intent(this,Checkliststate.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     CreatenewlistSpec.setIndicator("編輯清單").setContent(new Intent(this,Createnewlist.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 
     
@@ -56,6 +58,7 @@ public class CheckListActivity extends TabActivity implements OnTabChangeListene
     tabHost.addTab(MainTabSpec);
     tabHost.addTab(BbqTabSpec);
     tabHost.addTab(HotpotTabSpec);
+    tabHost.addTab(TravelTabSpec);
     tabHost.addTab(CreatenewlistSpec);
 
     setTabColor(tabHost);
@@ -65,7 +68,7 @@ public class CheckListActivity extends TabActivity implements OnTabChangeListene
         tabHost.getTabWidget().getChildAt(i).getLayoutParams().height = 60;
     }*/
     
-    tabHost.getTabWidget().getChildAt(3).setVisibility(View.GONE);
+    tabHost.getTabWidget().getChildAt(4).setVisibility(View.GONE);
     tabHost.setCurrentTab(0);
 
 /*
